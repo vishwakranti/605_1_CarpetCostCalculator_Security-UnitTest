@@ -10,25 +10,24 @@ namespace CarpetCostCalculator.Pages
     public class IndexModel : PageModel
     {
 
-        public Carpet Carpet = new Carpet();
-        
+        public Carpet Carpet { get; set; }
+
         public void OnGet()
         {
-
+            this.Carpet = new Carpet();
         }
         
         public void OnPost(Carpet carpet)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                Carpet.AreaOfCarpet = CarpetOperations.CalculateRoomArea(carpet.Width, carpet.Length);
-                Carpet.Cost = CarpetOperations.CalculateCarpetFinalCost(Int32.Parse(carpet.CarpetType), 
-                                                                        Carpet.AreaOfCarpet, 
-                                                                        carpet.Installation,
-                                                                        carpet.Underlay,
-                                                                        Carpet.InstallationCost,
-                                                                        Carpet.UnderlayCost, Carpet.PerSquareMeter);
+                carpet.RoomArea = CarpetOperations.CalcRoomArea(carpet.Width, carpet.Length);
+                carpet.FinalCost = CarpetOperations.TotalInstallCost(carpet);
+                carpet.Results = CarpetOperations.RoomAreaResults(carpet.RoomArea, carpet.FinalCost);
 
+                //After calculation, assign the incoming model "carpet" to
+                //the public property "Carpet" of the IndexModel
+                this.Carpet = carpet;
             }
         }
     }

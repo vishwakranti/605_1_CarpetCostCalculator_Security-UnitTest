@@ -43,8 +43,12 @@
         <h3>Results</h3>
 
         <div class="row">
-            <div class="col-md-4"><label asp-for="@Model.Carpet.AreaOfCarpet" class="col-lg-4 text-success"></label> <input type="string" asp-for="@Model.Carpet.AreaOfCarpet" class="col-lg-2" disabled/>sqM</div>
-            <div class="col-md-8"><label asp-for="@Model.Carpet.Cost" class="col-lg-2 text-success"></label> $<input type="string" asp-for="@Model.Carpet.Cost" class="col-lg-2" disabled/></div>
+            <div class="col-md-4"><label asp-for="@Model.Carpet.RoomArea" class="col-lg-4 text-success"></label> <input type="string" asp-for="@Model.Carpet.RoomArea" class="col-lg-4" disabled/>sqM</div>
+            <div class="col-md-8"><label asp-for="@Model.Carpet.FinalCost" class="col-lg-2 text-success"></label> $<input type="string" asp-for="@Model.Carpet.FinalCost" class="col-lg-4" disabled/></div>
+            
+        </div>
+        <div class="row">
+            <div class="col-md-12 p-2"><label asp-for="@Model.Carpet.Results" class="col-lg-1 text-success"></label><input type="string" asp-for="@Model.Carpet.Results" class="col-lg-8" disabled /></div>
         </div>
     </div>
 </div>

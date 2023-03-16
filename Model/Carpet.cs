@@ -1,4 +1,6 @@
 ﻿
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.ComponentModel.DataAnnotations;
 
@@ -7,10 +9,10 @@ namespace CarpetCostCalculator.Model
     public class Carpet
     {
         [Display(Name = "Carpet Width")]
-        public decimal Width { get; set; }
+        public float Width { get; set; }
 
         [Display(Name = "Carpet Length")]
-        public decimal Length { get; set; }
+        public float Length { get; set; }
 
         [Display(Name = "Carpet Type")]
         public string CarpetType { get; set; }
@@ -24,15 +26,18 @@ namespace CarpetCostCalculator.Model
         [Display(Name = "Do you want Underlay for your Carpet")]
         public bool Underlay { get; set; }
 
-        public const decimal InstallationCost = 20.0m;
-        public const decimal UnderlayCost = 20.0m;
-        public const decimal PerSquareMeter = 20.0m;
+        public const float InstallationCost = 20.0F;
+        public const float UnderlayCost = 20.0F;
+        public const float PerSquareMeter = 20.0F;
 
         [Display(Name = "Room Area")]
-        public decimal AreaOfCarpet { get; set; }
+        public float RoomArea { get; set; }
 
         [Display(Name = "Final Cost")]
-        public decimal Cost { get; set; }
+        public float FinalCost { get; set; }
+
+        [Display(Name = "Results")]
+        public string? Results { get; set; } //make this property nullable, so that ModelState.IsValid is still true on post
 
 
         public Carpet()
